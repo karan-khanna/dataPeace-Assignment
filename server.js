@@ -19,7 +19,6 @@ app.use(function(req, res, next) {
 });
 
 app.get("/api/users", (request, response) => {
-  console.log("req.query", request.query);
   let pageSize = 10; //PAGE SIZE IS UNKNOWN IN THE P.S (SO AS TO KNOW HOW MANY TO SKIP)
   let toSkip = request.query.page
     ? pageSize * request.query.page - pageSize
@@ -36,27 +35,22 @@ app.get("/api/users", (request, response) => {
 });
 
 app.post("/api/users", (request, response) => {
-  console.log("request Body", request.body);
   let userDetails = request.body;
   userOperations.createUser(userDetails, response);
 });
 
 app.get("/api/users/:id", (request, response) => {
-  console.log("ID received is ::", request.params.id);
   let searchId = request.params.id;
   userOperations.findUserById(searchId, response);
 });
 
 app.put("/api/users/:id", (request, response) => {
-  console.log("ID received is ::", request.params.id);
-  console.log("Received body is ::", request.body);
   let searchId = request.params.id;
   let updates = request.body;
   userOperations.updateUser(searchId, updates, response);
 });
 
 app.delete("/api/users/:id", (request, response) => {
-  console.log("ID received is ::", request.params.id);
   let searchId = request.params.id;
   userOperations.deleteUser(searchId, response);
 });

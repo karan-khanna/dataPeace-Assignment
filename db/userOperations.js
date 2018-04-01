@@ -2,10 +2,6 @@ var users = require("./userSchema");
 
 var userOperations = {
   getUser: function(toSkip, limit, sortBy, sortByOrder, name, response) {
-    console.log(
-      `to skip :: ${toSkip} , limit :: ${limit} , sortBy ::${sortBy} ,sortByOrder :: ${sortByOrder}, name::${name}`
-    );
-
     users.find(
       {
         $or: [
