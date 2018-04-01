@@ -25,7 +25,7 @@ var userOperations = {
         if (err) {
           console.log("error while getting users from database");
         } else {
-          response.send(doc);
+          response.status(200).send(doc);
         }
       }
     );
@@ -35,7 +35,7 @@ var userOperations = {
     userToSave.save((err, doc) => {
       if (err) console.log(`Error while saving a new user`, err.stack);
       else {
-        response.send("User saved successfully");
+        response.status(201).send("User saved successfully");
       }
     });
   },
@@ -44,7 +44,7 @@ var userOperations = {
       if (err) {
         console.log("erorr while searching by id..");
       } else {
-        response.send(doc);
+        response.status(200).send(doc);
       }
     });
   },
@@ -53,7 +53,7 @@ var userOperations = {
       if (err) {
         console.log("error while updating a user..");
       } else {
-        response.send("Updated Successfully");
+        response.status(200).send("Updated Successfully");
       }
     });
   },
@@ -62,7 +62,7 @@ var userOperations = {
       if (err) {
         console.log("error while deleting a user..");
       } else {
-        response.send("Deleted Successfully");
+        response.status(200).send("Deleted Successfully");
       }
     });
   }
