@@ -41,6 +41,12 @@ app.post("/api/users", (request, response) => {
   userOperations.createUser(userDetails, response);
 });
 
+app.get("/api/users/:id", (request, response) => {
+  console.log("ID received is ::", request.params.id);
+  let searchId = request.params.id;
+  userOperations.findUserById(searchId, response);
+});
+
 var port = 1234;
 app.listen(port, () => {
   console.log("Server start on port....", port);

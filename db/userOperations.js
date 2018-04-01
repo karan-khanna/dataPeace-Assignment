@@ -38,6 +38,15 @@ var userOperations = {
         response.send("User saved successfully");
       }
     });
+  },
+  findUserById: function(searchId, response) {
+    users.find({ id: searchId }, (err, doc) => {
+      if (err) {
+        console.log("erorr while searching by id..");
+      } else {
+        response.send(doc);
+      }
+    });
   }
 };
 
