@@ -47,6 +47,15 @@ var userOperations = {
         response.send(doc);
       }
     });
+  },
+  updateUser: function(searchId, updates, response) {
+    users.findOneAndUpdate({ id: searchId }, updates, (err, doc) => {
+      if (err) {
+        console.log("error while updating a record..");
+      } else {
+        response.send("Updated Successfully");
+      }
+    });
   }
 };
 

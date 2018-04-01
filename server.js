@@ -47,6 +47,14 @@ app.get("/api/users/:id", (request, response) => {
   userOperations.findUserById(searchId, response);
 });
 
+app.put("/api/users/:id", (request, response) => {
+  console.log("ID received is ::", request.params.id);
+  console.log("Received body is ::", request.body);
+  let searchId = request.params.id;
+  let updates = request.body;
+  userOperations.updateUser(searchId, updates, response);
+});
+
 var port = 1234;
 app.listen(port, () => {
   console.log("Server start on port....", port);
