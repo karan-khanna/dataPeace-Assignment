@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const userOperations = require("./db/userOperations");
 
 const app = express();
 
@@ -15,6 +16,23 @@ app.use(function(req, res, next) {
   );
   res.setHeader("Access-Control-Allow-Credentials", true);
   next();
+});
+
+app.get("/api/users", (request, response) => {
+  console.log("req.query", request.query);
+  let pageSize = 10; //PAGE SIZE IS UNKNOWN IN THE P.S (SO AS TO KNOW HOW MANY TO SKIP)
+  let toSkip = request.query.page
+    ? pageSize * request.query.page - pageSize
+    : 0;
+  let limit = request.query.limit ? request.query.limit : 5;
+  let sortBy = request.query.sort ? request.query.sort : "id";
+  let name = request.query.name ? request.query.name : "";
+  let sortByOrder = 1; //1 for ascending
+  if (sortBy.indexOf("-" >= 0)) {
+    sortByOrder = -1; //-1 for descending
+    sortBy = sortBy.split("-")[1];
+  }
+  userOperations.getUser(toSkip, limit, sortBy, sortByOrder, name, response);
 });
 
 var port = 1234;
