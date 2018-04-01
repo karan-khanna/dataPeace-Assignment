@@ -55,6 +55,12 @@ app.put("/api/users/:id", (request, response) => {
   userOperations.updateUser(searchId, updates, response);
 });
 
+app.delete("/api/users/:id", (request, response) => {
+  console.log("ID received is ::", request.params.id);
+  let searchId = request.params.id;
+  userOperations.deleteUser(searchId, response);
+});
+
 var port = 1234;
 app.listen(port, () => {
   console.log("Server start on port....", port);

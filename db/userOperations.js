@@ -51,9 +51,18 @@ var userOperations = {
   updateUser: function(searchId, updates, response) {
     users.findOneAndUpdate({ id: searchId }, updates, (err, doc) => {
       if (err) {
-        console.log("error while updating a record..");
+        console.log("error while updating a user..");
       } else {
         response.send("Updated Successfully");
+      }
+    });
+  },
+  deleteUser: function(searchId, response) {
+    users.findOneAndRemove({ id: searchId }, (err, doc) => {
+      if (err) {
+        console.log("error while deleting a user..");
+      } else {
+        response.send("Deleted Successfully");
       }
     });
   }
