@@ -39,5 +39,6 @@ To start the server :
 
 1.Clone the repo
 
-2.Run `npm start`
+2.Run `npm install`
 
+3.Run `npm start`
