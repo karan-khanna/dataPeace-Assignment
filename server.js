@@ -35,6 +35,12 @@ app.get("/api/users", (request, response) => {
   userOperations.getUser(toSkip, limit, sortBy, sortByOrder, name, response);
 });
 
+app.post("/api/users", (request, response) => {
+  console.log("request Body", request.body);
+  let userDetails = request.body;
+  userOperations.createUser(userDetails, response);
+});
+
 var port = 1234;
 app.listen(port, () => {
   console.log("Server start on port....", port);

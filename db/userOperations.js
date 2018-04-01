@@ -29,6 +29,15 @@ var userOperations = {
         }
       }
     );
+  },
+  createUser: function(userDetails, response) {
+    let userToSave = new users(userDetails);
+    userToSave.save((err, doc) => {
+      if (err) console.log(`Error while saving a new user`, err.stack);
+      else {
+        response.send("User saved successfully");
+      }
+    });
   }
 };
 
